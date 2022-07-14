@@ -1,3 +1,10 @@
+# JAVA 8 installation in ubuntu 18.04
+
+
+
+
+
+
 # JAVA 11 INSTALLATION IN UBUNTU
 $ sudo apt update
 $ sudo apt install openjdk-11-jdk -y
