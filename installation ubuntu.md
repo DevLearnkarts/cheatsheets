@@ -1,9 +1,12 @@
 # JAVA 8 installation in ubuntu 18.04
-
-
-
-
-
+sudo apt update
+sudo apt install openjdk-8-jdk openjdk-8-jre
+set path
+cat >> /etc/environment <<EOL
+JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+JRE_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
+EOL
+execute command - sudo update-alternatives --config java ( select which ever java version you need )
 
 # JAVA 11 INSTALLATION IN UBUNTU
 $ sudo apt update
