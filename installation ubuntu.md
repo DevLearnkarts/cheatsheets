@@ -58,7 +58,27 @@ Confirm installation by checking the version of kubectl.
 kubectl version --client && kubeadm version                              
                               
                               
-                              
+Disable Swap
+Turn off swap.
+
+sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+sudo swapoff -a
+
+Enable kernel modules and configure sysctl.
+Enable kernel modules
+
+sudo modprobe overlay
+sudo modprobe br_netfilter
+
+Add some settings to sysctl
+sudo tee /etc/sysctl.d/kubernetes.conf<<EOF
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+net.ipv4.ip_forward = 1
+EOF
+
+Reload sysctl
+sudo sysctl --system                              
                               
                               
                               
