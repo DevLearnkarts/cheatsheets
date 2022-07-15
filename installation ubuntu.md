@@ -95,6 +95,7 @@ sudo apt install -y containerd.io docker-ce docker-ce-cli
 sudo mkdir -p /etc/systemd/system/docker.service.d
 
 #### Create daemon json config file
+````                                           
 sudo tee /etc/docker/daemon.json <<EOF
 {
   "exec-opts": ["native.cgroupdriver=systemd"],
@@ -105,7 +106,7 @@ sudo tee /etc/docker/daemon.json <<EOF
   "storage-driver": "overlay2"
 }
 EOF
-
+````
 #### Start and enable Services
 sudo systemctl daemon-reload 
 sudo systemctl restart docker
@@ -116,12 +117,13 @@ sudo modprobe overlay
 sudo modprobe br_netfilter
 
 #### Set up required sysctl params
+````
 sudo tee /etc/sysctl.d/kubernetes.conf<<EOF
 net.bridge.bridge-nf-call-ip6tables = 1
 net.bridge.bridge-nf-call-iptables = 1
 net.ipv4.ip_forward = 1
 EOF
-                                           
+````                                           
 #### Reload sysctl
 sudo sysctl --system                              
                               
@@ -138,11 +140,11 @@ sudo systemctl enable kubelet
 kubeadm init
 
 #### Configure kubectl using commands in the output:
-
+````
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
-
+````
 #### Install network plugin on Master
 In this we’ll use Calico. You can choose any other supported network plugins.
 
