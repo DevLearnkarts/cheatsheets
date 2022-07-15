@@ -40,10 +40,22 @@ cd nexus-3.35.0-02/bin
 ./nexus status ( by this you check the status of nexus artifactory )
 To access this use http://ip_Address:8081 ( by deafault which will be running on 8081)
 intial password will be present in /opt/sonatype-work/nexus3/admin.password
+
                               
+# INSTALLING KUBEADM ON GCP MACHINE
+Install kubelet, kubeadm and kubectl
+sudo apt update
+sudo apt -y install curl apt-transport-https
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+                             
+Then install required packages.
+sudo apt update
+sudo apt -y install vim git curl wget kubelet kubeadm kubectl
+sudo apt-mark hold kubelet kubeadm kubectl
                               
-                              
-                              
+Confirm installation by checking the version of kubectl.
+kubectl version --client && kubeadm version                              
                               
                               
                               
