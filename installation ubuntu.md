@@ -29,3 +29,27 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 sudo apt-key fingerprint 0EBFCD88
 sudo apt-get update -y
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y 
+
+# NEXUS INSTALLATION IN UBUNTU
+apt-get install wget ( install if you dont have wget )
+java -version ( make sure java is installed which should be java 8 or higher version )
+wget https://download.sonatype.com/nexus/3/latest-unix.tar.gz
+tar -xvf latest-unix.tar.gz
+cd nexus-3.35.0-02/bin
+./nexus start ( starts the nexus artifactory )
+./nexus status ( by this you check the status of nexus artifactory )
+To access this use http://ip_Address:8081 ( by deafault which will be running on 8081)
+intial password will be present in /opt/sonatype-work/nexus3/admin.password
+                              
+                              
+                              
+                              
+                              
+                              
+                              
+                              
+                              
+                              
+                              
+                              
+                              
