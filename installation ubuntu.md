@@ -125,6 +125,27 @@ EOF
 #### Reload sysctl
 sudo sysctl --system                              
                               
-                              
+#### Initialize master node
+Login to the server to be used as master and make sure that the br_netfilter module is loaded:
+````
+lsmod | grep br_netfilter
+````                                           
+
+#### Enable kubelet service.
+sudo systemctl enable kubelet
+
+#### Initialize kubeadm
+kubeadm init
+
+#### Configure kubectl using commands in the output:
+
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+#### Install network plugin on Master
+In this we’ll use Calico. You can choose any other supported network plugins.
+
+kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml                              
                               
                               
