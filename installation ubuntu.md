@@ -170,6 +170,11 @@ rm -rf /usr/local/bin/helm
                       }
                     }                 
                                            
+ ## Set up insecure registry                                          
                                            
-                                           
-                            
+    to setup Insecure Registries. to do that we need to edit or if not present create a file /etc/docker/daemon.json in that file add details of nexus
+
+{ "insecure-registries":["nexus_machine_ip:8083"] }
+once that's done we need to execute systemctl restart docker this is to apply new changes, also we can verify whether registry is added or not by executing docker info
+
+once this is done from jenkins host you can try docker login -u nexus_username -p nexus_pass nexus_ip:8083                        
