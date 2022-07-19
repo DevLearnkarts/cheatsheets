@@ -179,11 +179,11 @@ rm -rf /usr/local/bin/helm
 once that's  done we need to execute systemctl restart docker this is to apply new changes, also we can verify whether registry is added or not by executing docker info once this is done from jenkins host you can try docker login -u nexus_username -p nexus_pass nexus_ip:8083
   
 ## Configure email server 
-  
+````
   post {
 		always {
 			mail bcc: '', body: "<br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "${currentBuild.result} CI: Project name -> ${env.JOB_NAME}", to: "deekshith.snsep@gmail.com";  
 		}
 	}
-   
+````   
   
