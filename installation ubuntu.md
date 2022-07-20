@@ -191,3 +191,22 @@ once that's  done we need to execute systemctl restart docker this is to apply n
 ````	
  curl -u admin:$docker_password http://nexus_machine_ip:8081/repository/helm-hosted/ --upload-file myapp-${helmversion}.tgz -v
 ````	
+
+## Connecting jenkins with kubernetes cluster
+	
+````
+
+	stage('connecting to k8s cluster'){
+		  steps{
+	            script{
+	    		withCredentials([kubeconfigFile(credentialsId: 'kubernetes-config', variable: 'KUBECONFIG')]) {
+			  dir ("kubernetes/"){  
+				sh 'helm list'
+				sh 'helm upgrade --install --set image.repository="nexus_ip:8083/springapp" --set image.tag="${VERSION}" myjavaapp myapp/ ' 
+			  }
+		       } 
+		    }		
+		  }
+		}
+
+````
