@@ -186,4 +186,8 @@ once that's  done we need to execute systemctl restart docker this is to apply n
 		}
 	}
 ````   
-  
+	
+## Creating Helm hosted repository in Nexus and Pushing the helm charts
+````	
+ curl -u admin:$nexus_password http://nexus_machine_ip:8081/repository/helm-hosted/ --upload-file myapp-${helmversion}.tgz -v
+````	
