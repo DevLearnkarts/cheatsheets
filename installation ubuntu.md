@@ -210,3 +210,8 @@ once that's  done we need to execute systemctl restart docker this is to apply n
 		}
 
 ````
+
+## Mail Input configure 
+````
+input(id: "Deploy Gate", message: "Deploy ${params.project_name}?", ok: 'Deploy')
+````	
