@@ -215,3 +215,9 @@ once that's  done we need to execute systemctl restart docker this is to apply n
 ````
 input(id: "Deploy Gate", message: "Deploy ${params.project_name}?", ok: 'Deploy')
 ````	
+
+## Configuring PR based trigger in Jenkins
+	
+Branch Specifier (blank for 'any') is : ${ghprbActualCommit}
+
+The refspec used is: +refs/pull/${ghprbPullId}/*:refs/remotes/origin/pr/${ghprbPullId}/*
