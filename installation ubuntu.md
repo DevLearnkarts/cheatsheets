@@ -139,6 +139,12 @@ sudo systemctl enable kubelet
 #### Initialize kubeadm
 kubeadm init
 
+#### Troubleshoot kubeadm
+					   
+rm /etc/containerd/config.toml
+systemctl restart containerd
+kubeadm init
+					   
 #### Configure kubectl using commands in the output:
 ````
 mkdir -p $HOME/.kube
